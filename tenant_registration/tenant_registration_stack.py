@@ -86,7 +86,8 @@ class TenantRegistrationStack(Stack):
             iam.PolicyStatement(
                 effect=iam.Effect.ALLOW,
                 actions=["cognito-idp:CreateGroup", 
-                        "cognito-idp:AdminCreateUser"],
+                        "cognito-idp:AdminCreateUser",
+                        "cognito-idp:AdminAddUserToGroup"],
                 resources= ["arn:aws:cognito-idp:us-east-1:723094108107:userpool/us-east-1_jDEPOze1y"],
             )
         )
