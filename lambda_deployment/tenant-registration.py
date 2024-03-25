@@ -1,11 +1,11 @@
-import json
 import uuid
 import requests
 
 
 def register_tenant(event, context):
-    print("event:",)
-    print(event)
+    print("event:", event)
+    print("context:", context)
+ 
     try:
         # Generate a unique user ID
         tenant_id = str(uuid.uuid4())
@@ -32,7 +32,7 @@ def register_tenant(event, context):
 
 def create_admin_tenant(tenant_details):
     try:
-        url = "https://5npujorei3.execute-api.us-east-1.amazonaws.com/prod/user/tenant-admin"
+        url = "https://h54srocn1l.execute-api.us-east-1.amazonaws.com/prod/user/tenant-admin"
         print("calling create admin tenant api")
         
         response=requests.post(url, json=tenant_details, timeout=5) 

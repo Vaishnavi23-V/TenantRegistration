@@ -5,8 +5,9 @@ client = boto3.client('cognito-idp')
 
 def create_tenant_admin_user(event, context):
     print("event:", event)
+    print("context:",context)
     try:
-        user_pool_id = 'us-east-1_jDEPOze1y'
+        user_pool_id = 'us-east-1_iBfvEWNMC'
 
         # Get tenant details from event
         tenant_details = event

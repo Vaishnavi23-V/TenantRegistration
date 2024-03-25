@@ -41,7 +41,6 @@ class TenantRegistrationStack(Stack):
             http_method="POST",
              integration=apigateway.LambdaIntegration(
                 handler=tenant_registration,
-                proxy=True
             )
             )
         
@@ -50,7 +49,6 @@ class TenantRegistrationStack(Stack):
             http_method="POST",
             integration=apigateway.LambdaIntegration(
                 handler=user_management,
-                proxy=True
             )
         )
 
@@ -81,13 +79,13 @@ class TenantRegistrationStack(Stack):
         user_pool_domain.node.add_dependency(user_pool)
         user_pool_domain.node.add_dependency(user_pool_client)
 
-         # Add permissions to the Lambda function's IAM role to allow calling CreateGroup operation in Cognito
+         # Add permissions to the Lambda function's IAM role to allow operations in Cognito
         user_management.role.add_to_policy(
             iam.PolicyStatement(
                 effect=iam.Effect.ALLOW,
                 actions=["cognito-idp:CreateGroup", 
                         "cognito-idp:AdminCreateUser",
                         "cognito-idp:AdminAddUserToGroup"],
-                resources= ["arn:aws:cognito-idp:us-east-1:723094108107:userpool/us-east-1_jDEPOze1y"],
+                resources= ["arn:aws:cognito-idp:us-east-1:723094108107:userpool/us-east-1_iBfvEWNMC"],
             )
         )
